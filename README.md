@@ -1,3 +1,3 @@
 # StudentAssign
 
-A c++ program levaraging structures, assigning students to multiple teachers
+A c++ program, to assign teachers to students randomly
