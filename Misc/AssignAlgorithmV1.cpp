@@ -23,7 +23,7 @@ void assignAlgorithm(){
    
     for(int j=0;j<4;j++){
         for (int i=0; i<10;i++){
-            Assigned[j][i+1] = students[i+1]; //i+1 since first column occupied by teachers above we are using upto 10 only inside the for loop
+            Assigned[j][i+1] = students[i]; //i+1 since first column occupied by teachers above we are using upto 10 only inside the for loop
         }
     }
     
