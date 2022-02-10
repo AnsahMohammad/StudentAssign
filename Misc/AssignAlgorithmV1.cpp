@@ -18,24 +18,6 @@ void assignAlgorithm(){
         Assigned[i][0] = teachers[i];
     }
     
-    /*count blcok
-    for(int i=0;i<10;i++){
-        for(int j=0;j<4;j++){
-            cout << Assigned[j][i];
-        }
-    }
-    */
-
-
-    //random Assign algorithm
-    /*
-    srand(time(0));
-    int count = 0;
-    for (int i=0;count!=10;i++){
-        int randint = ((rand() % numTeachers));//getting a random index of teacher
-        
-    }
-    */
 
    //temporary assign algorithm;
    
