@@ -5,12 +5,12 @@ using namespace std;
 
 class Teacher {
     public:
-        string names[10];
+        string names[4];
         int nameIndex = 0;
 
         void dispNames() {
         // Method/function
-            for(int i=0;i<10;i++){
+            for(int i=0;i<4;i++){
                 cout <<" | " <<names[i] <<" | " ;
             }
             cout << endl;
@@ -24,8 +24,8 @@ class Teacher {
         }
         string * teachArr(){
             string *p;
-            p = new string[10];
-            for (int i=0;i<10;i++){
+            p = new string[4];
+            for (int i=0;i<4;i++){
                 p[i] = names[i];
             }
 
@@ -41,38 +41,42 @@ Teacher teach;
 void assignAlgorithm(){
     string *teachers;
     teachers = teach.teachArr();
-    
+
     string students[10] = {"Ansa","bab","jack","jacob","rajw","dam","tripod","ans","er","daniel"};
 
     int maxStudent = 2;
     int numTeachers = 4;
+    int numStudents = 10;
 
-    string Assigned[maxStudent][10];
-    for(int i=0;i<10;i++){
-        Assigned[0][i] = teachers[i];
+    string Assigned[4][11];
+    for(int i=0; i<numTeachers; i++){
+        Assigned[i][0] = teachers[i];
     }
     
-    //taking random integer
+ 
+   //temporary assign algorithm;
+   
+    for(int j=0;j<numTeachers;j++){
+        for (int i=0; i<numStudents;i++){
+            Assigned[j][i+1] = students[i]; //i+1 since first column occupied by teachers above we are using upto 10 only inside the for loop
+        }
+    }
 
-    srand(time(0));
-    int count = 0;
-    for (int i=0;count==10;i++){
-        int randint = ((rand() % numTeachers));//getting a random index of teacher
-        for (int j=0;j<maxStudent;j++){
-            if (Assigned[j][randint] == string(0)){
-                Assigned[j][randint] = students[j];
-                cout << students[j];
-                count++;
-                break;
+    
+    //output-ing
+    string output = "";
+    for (int j=0; j<4; j++){
+        for (int i=0; i< 11; i++){
+            if (i == 0){
+                output += "\n" + Assigned[j][i] + " : ";
+            }
+            else{
+            output += Assigned[j][i] + " - ";
             }
         }
+        output += "\n";
     }
-    for(int i;i<10;i++){
-        for(int j=0;j<2;j++){
-            cout <<Assigned[j][i];
-        }
-    }
-
+    cout << output;
 
 }
 
@@ -91,7 +95,7 @@ int main() {
     int page=0;
     cout << "\n\n--------------------------------\n\n" << endl;
     cout << "Welcome" << endl;
-    cout << "Type\n 1> to add a teacher\n 2> to show teachers \n : ";
+    cout << "Type\n 1> to add a teacher\n 2> to show teachers \n 3> Show Assigned \n : ";
     cin >> page;
     if (page == 1){
         addTeacher();
