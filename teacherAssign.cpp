@@ -6,9 +6,9 @@ using namespace std;
 
 class Teacher {
     public:
-        string names[4];
+        string names[25];
         int nameIndex = 0;
-        int sizeOfTeach = 4;
+        int sizeOfTeach = 25;
 
         void dispNames() {
         // Method/function
@@ -40,9 +40,9 @@ class Teacher {
 
 class Student {
     public:
-        string names[10];
+        string names[100];
         int nameIndex = 0;
-        int sizeOfStud = 10;
+        int sizeOfStud = 100;
 
         void dispNames() {
         // Method/function
@@ -87,13 +87,19 @@ void assignAlgorithm(){
 
 
     int numTeachers = 0;
-    int numStudents = 10;
+    int numStudents = 0;
 
-    string Assigned[4][11]; 
-    for(int i=0; i<4; i++){ //i<4 since thats the maximum no of teachers in current version
+    string Assigned[25][101]; 
+    for(int i=0; i<teach.sizeOfTeach; i++){ //i<25 since thats the maximum no of teachers in current version
         if(teachers[i].length() > 0){
             Assigned[i][0] = teachers[i];
             numTeachers++;
+        }
+    }
+
+    for(int i=0; i<student.sizeOfStud; i++){ //i<100 since thats the maximum no of students in current version
+        if(students[i].length() > 0){
+            numStudents++;
         }
     }
     
