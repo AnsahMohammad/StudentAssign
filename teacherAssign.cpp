@@ -3,15 +3,19 @@
 #include <time.h>
 using namespace std;
 
+
 class Teacher {
     public:
         string names[4];
         int nameIndex = 0;
+        int sizeOfTeach = 4;
 
         void dispNames() {
         // Method/function
-            for(int i=0;i<4;i++){
-                cout <<" | " <<names[i] <<" | " ;
+            for(int i=0;i<sizeOfTeach;i++){
+                if(names[i].length() > 0){
+                    cout <<" | " <<names[i] <<" | " ;
+                }
             }
             cout << endl;
         }
@@ -24,8 +28,8 @@ class Teacher {
         }
         string * teachArr(){
             string *p;
-            p = new string[4];
-            for (int i=0;i<4;i++){
+            p = new string[sizeOfTeach];
+            for (int i=0;i<sizeOfTeach;i++){
                 p[i] = names[i];
             }
 
@@ -38,11 +42,14 @@ class Student {
     public:
         string names[10];
         int nameIndex = 0;
+        int sizeOfStud = 10;
 
         void dispNames() {
         // Method/function
-            for(int i=0;i<10;i++){
-                cout <<" | " <<names[i] <<" | " ;
+            for(int i=0;i<sizeOfStud;i++){
+                if(names[i].length() > 0){
+                    cout <<" | " <<names[i] <<" | " ;
+                }
             }
             cout << endl;
         }
@@ -57,8 +64,8 @@ class Student {
 
         string * StudArr(){
             string *q;
-            q = new string[10];
-            for (int i=0;i<10;i++){
+            q = new string[sizeOfStud];
+            for (int i=0;i<sizeOfStud;i++){
                 q[i] = names[i];
             }
 
@@ -78,13 +85,16 @@ void assignAlgorithm(){
     string *students;
     students = student.StudArr();
 
-    int maxStudent = 3;
-    int numTeachers = 4;
+
+    int numTeachers = 0;
     int numStudents = 10;
 
     string Assigned[4][11]; 
-    for(int i=0; i<numTeachers; i++){
-        Assigned[i][0] = teachers[i];
+    for(int i=0; i<4; i++){ //i<4 since thats the maximum no of teachers in current version
+        if(teachers[i].length() > 0){
+            Assigned[i][0] = teachers[i];
+            numTeachers++;
+        }
     }
     
  
@@ -99,7 +109,7 @@ void assignAlgorithm(){
 
    //random Assign algorithm
     srand(time(0));
-    for(int i=0;i<10;i++){
+    for(int i=0;i<numStudents;i++){
         int randint = ((rand() % numTeachers)); //get a random from 0 - NumberOfTeachers 
         Assigned[randint][i+1] = students[i];
         
@@ -107,8 +117,8 @@ void assignAlgorithm(){
     
     //output-ing
     string output = "";
-    for (int j=0; j<4; j++){
-        for (int i=0; i< 11; i++){
+    for (int j=0; j<numTeachers; j++){
+        for (int i=0; i< (numStudents+1); i++){ //numstudents+1 becuase one column of matrix is used by teachres index
             if (i == 0){
                 output += "\n" + Assigned[j][i] + " :";
             }
