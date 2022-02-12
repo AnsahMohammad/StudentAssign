@@ -18,10 +18,11 @@ class Teacher {
                 }
             }
             cout << endl;
+            printf("Total number of Teachers : [%d] \n",nameIndex);
         }
         void addName(){
             string newName;
-            cout<<"Enter the name of Person you'd like to add : ";
+            printf("Enter the name of Person you'd like to add [%d]: ",nameIndex+1);
             cin >> newName;
             names[nameIndex] = newName;
             nameIndex++;
@@ -52,11 +53,12 @@ class Student {
                 }
             }
             cout << endl;
+            printf("Total number of Students : [%d] \n",nameIndex);
         }
 
         void addName(){
             string newName;
-            cout<<"Enter the name of Person you'd like to add : ";
+            printf("Enter the name of Person you'd like to add [%d]: ",nameIndex+1);
             cin >> newName;
             names[nameIndex] = newName;
             nameIndex++;
